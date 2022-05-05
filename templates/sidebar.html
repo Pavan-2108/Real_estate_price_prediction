@@ -1,0 +1,152 @@
+<style>
+	.ani-container {
+		display: flex;
+		width: fit-content;
+	}
+	#flexbox {
+		display: flex;
+		position: relative;
+		left:1000px;
+		transition: all .4s;
+		z-index: 3;
+	}
+
+
+
+	
+</style>
+
+<div class="main-header">
+    <!-- Logo Header -->
+    <div class="logo-header" data-background-color="blue">
+        
+        <a href="index.html" class="logo" style="color: white">
+            <img src="/static/image-asset/icons/logo.png" height=50 alt="navbar brand" class="navbar-brand"> 
+        
+        </a>
+        <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+                <i class="icon-menu"></i>
+            </span>
+        </button>
+        <button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+        <div class="nav-toggle">
+            <button class="btn btn-toggle toggle-sidebar">
+                <i class="icon-menu"></i>
+            </button>
+        </div>
+    </div>
+    <!-- End Logo Header -->
+
+    <!-- Navbar Header -->
+    <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
+        
+        <div class="container-fluid" style="text-align:center; margin-left:400px;">
+            <div class="collapse" id="search-nav" style="text-align:center; ">
+                <span style="color: white; font: size 32px !important;; font-weight:800;"><h1 style="color: white; font-weight:800;">Real Estate Price Prediction</h1></span>
+            </div>
+        </div>
+
+
+		<div class="ani-container">
+			<div id="flexbox" visibility="hidden" >
+				<div class="ml-md-auto py-2 py-md-0" class="movers" >
+					<a href="/update_mail/" class="btn btn-secondary btn-round">Update Mail</a>
+				</div>
+		
+				<div class="ml-md-auto py-2 py-md-0" class="movers">
+					<a href="/update_password/" class="btn btn-secondary btn-round">Update Password</a>
+				</div>
+			</div>
+			<div class="avatar-sm float-left mr-2" onclick="triggerAni()" style="cursor: pointer;z-index:100;">
+				<img src="/static/dashboard_assets/img/profile.png" alt="..." class="avatar-img rounded-circle">
+				
+			</div>
+			
+		</div>
+
+    </nav>
+    <!-- End Navbar -->
+</div>
+        
+        <!-- Sidebar -->
+		<div class="sidebar sidebar-style-2">			
+			<div class="sidebar-wrapper scrollbar scrollbar-inner">
+				<div class="sidebar-content">
+					
+					<ul class="nav nav-primary">
+                        <li class="nav-item 
+                        {% if sidefocus == 1 %}
+                            active
+                        {% endif %}
+                                    ">
+							<a href="/select_city/" aria-expanded="false">
+								<i class="fas fa-home"></i>
+								<p>Select City</p>
+							</a>
+						</li>
+						<li class="nav-item
+                        {% if sidefocus == 2 %}
+                            active
+                        {% endif %}
+                        
+                        ">
+							<a href="#">
+								<i class="fas fa-users"></i>
+								<p>Select Locality</p>
+							</a>
+						</li>
+						<li class="nav-item
+                        {% if sidefocus == 3 %}
+                            active
+                        {% endif %}
+                        
+                        ">
+							<a href="#">
+								<i class="fas fa-home"></i>
+								<p>Select Area</p>
+							</a>
+						</li>
+						<li class="nav-item
+                        {% if sidefocus == 4 %}
+                            active
+                        {% endif %}
+                        ">
+							<a href="#">
+								<i class="fas fa-home"></i>
+								<p>Select Parameters</p>
+							</a>
+						</li>
+						
+
+						<li class="mx-4 mt-2">
+							<a href="/logout/" class="btn btn-primary btn-block"><span class="btn-label mr-2"> <i class="fa fa-sign-out"></i> </span>Logout</a> 
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- End Sidebar -->
+
+        <div class="main-panel">
+			<div class="content">
+				<div class="panel-header bg-primary-gradient">
+					<div class="page-inner py-5">
+							
+							<h4 style="float: right; color:white;">Hello, {{user[1]}}</h4>
+					</div>
+				</div>
+
+<script>
+	const allMovers = document.getElementById("flexbox")
+	const triggerAni = () => {
+		const value = allMovers.getAttribute("visibility")
+		if (value === 'show') {
+			allMovers.style = "left:1000px;opacity: 0;"
+			allMovers.setAttribute('visibility', 'hidden')
+		}else {
+			allMovers.style = "left:0px; opacity:1;"
+			allMovers.setAttribute('visibility', 'show')
+		}
+	}
+</script>

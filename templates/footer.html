@@ -1,0 +1,100 @@
+<footer class="footer">
+    <div class="container-fluid">
+
+    <!---	<div class="copyright ml-auto">
+            &copy; <script>document.write(new Date().getFullYear())</script>,
+        <a href="http://niltech.in/" target="_blank">Niltech Pvt Ltd</a> | Nugatory Inherits Luminescence Technologies Private Limited.
+        </div> --->		
+    </div>
+</footer>
+</div>
+
+<!-- Custom template | don't include it in your project! -->		<!-- End Custom template -->
+</div>
+<!--   Core JS Files   -->
+<script src="/static/dashboard_assets/js/core/jquery.3.2.1.min.js"></script>
+<script src="/static/dashboard_assets/js/core/popper.min.js"></script>
+<script src="/static/dashboard_assets/js/core/bootstrap.min.js"></script>
+
+<!-- jQuery UI -->
+<script src="/static/dashboard_assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script src="/static/dashboard_assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+<!-- jQuery Scrollbar -->
+<script src="/static/dashboard_assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+
+<!-- Chart JS -->
+<script src="/static/dashboard_assets/js/plugin/chart.js/chart.min.js"></script>
+
+<!-- jQuery Sparkline -->
+<script src="/static/dashboard_assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+<!-- Chart Circle -->
+<script src="/static/dashboard_assets/js/plugin/chart-circle/circles.min.js"></script>
+
+<!-- Datatables -->
+<script src="/static/dashboard_assets/js/plugin/datatables/datatables.min.js"></script>
+
+<!-- Bootstrap Notify -->
+<script src="/static/dashboard_assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+<!-- jQuery Vector Maps -->
+<script src="/static/dashboard_assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+<script src="/static/dashboard_assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+
+<!-- Sweet Alert -->
+<script src="/static/dashboard_assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+<!-- Atlantis JS -->
+<script src="/static/dashboard_assets/js/atlantis.min.js"></script>
+
+<!-- Atlantis DEMO methods, don't include it in your project! -->
+<script src="/static/dashboard_assets/js/setting-demo.js"></script>
+<script src="/static/dashboard_assets/js/demo.js"></script>
+
+<script>
+	$(document).ready(()=> {
+		$('#multi-filter-select').DataTable({
+			"pageLength": 5,
+			initComplete: function () {
+				this.api().columns().every(function () {
+					var column = this;
+					var select = $('<select class="form-control"><option value=""></option></select>')
+							.appendTo($(column.footer()).empty())
+							.on('change', function () {
+								var val = $.fn.dataTable.util.escapeRegex(
+										$(this).val()
+								);
+
+								column
+										.search(val ? '^' + val + '$' : '', true, false)
+										.draw();
+							});
+
+					column.data().unique().sort().each(function (d, j) {
+						select.append('<option value="' + d + '">' + d + '</option>')
+					});
+				});
+			}
+		});
+	})
+	</script>
+
+	<script>
+		function confirm_deletion(name) {
+			let data = confirm("are you sure you want to delete")
+			console.log(data)
+			if (data){
+				$.getJSON("/delete_user/"+name, value=>{
+					if (value["data"]){
+						alert("User deleted Successfully")
+						window.location.href = "{{url_for('select_city')}}"
+					}
+					else {
+						alert("user deletion failed")
+					}
+				})
+			}
+		}
+	</script>

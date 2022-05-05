@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Result | Real Estate Price Prediction</title>
+	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+	<link rel="icon" href="/static/image-asset/icons/favicon.ico" type="image/x-icon"/>
+
+	<!-- Fonts and icons -->
+	<script src="/static/dashboard_assets/js/plugin/webfont/webfont.min.js"></script>
+	<script>
+		WebFont.load({
+			google: {"families":["Lato:300,400,700,900"]},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['/static/dashboard_assets/css/fonts.min.css']},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
+
+	<!-- CSS Files -->
+	<link rel="stylesheet" href="/static/dashboard_assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/dashboard_assets/css/atlantis.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<link rel="stylesheet" href="/static/dashboard_assets/css/demo.css">
+
+	<style>
+		table, th, td {
+			border: 1px solid black;
+		  }
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		{% set sidefocus = 0 %}
+
+		<!-- Sidebar -->
+		{% include "sidebar.html" ignore missing %}
+		<!-- End Sidebar -->
+		<div class="page-inner">
+			<div class="row">
+
+				<div class="col-md-12">
+					<form method="post">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Analysis Result: </div>
+							</div>
+							<div class="card-body">
+								<div class="row" style="margin-left:10px;">
+									<br><br>
+									<h4>{{result}}</h4>
+								</div>
+
+								
+
+							</div>
+				
+						</div>
+					</form>
+				</div>
+			
+			</div>
+			
+		</div>
+	</div>
+						
+						
+						
+		
+		{% include "footer.html" ignore missing %}
+</body>
+</html>
